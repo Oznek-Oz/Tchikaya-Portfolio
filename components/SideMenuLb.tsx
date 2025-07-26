@@ -13,6 +13,7 @@ import SideMenuBtn from "./SideMenuBtn"
 import profileOperations from "../graphqlOperations/profile"
 import { partOfProfile, ProfileData } from "../types"
 import { currentMenu } from "../apollo-client"
+import { FaCoffee } from "react-icons/fa"
 
 interface Props {
   sideMenu: boolean
@@ -22,6 +23,13 @@ interface Props {
 
 export default function SideMenuLb({ sideMenu, showMenu, profile }: Props) {
   const menuId = useReactiveVar(currentMenu)
+  const [showPhone, setShowPhone] = useState(false)
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).__showPhoneOnMenuOpen) {
+      setShowPhone(true)
+      ;(window as any).__showPhoneOnMenuOpen = false
+    }
+  }, [sideMenu])
 
   function closeLb(e: MouseEvent): void {
     if ((e.target as Element).classList.contains("lb")) {
@@ -71,6 +79,20 @@ export default function SideMenuLb({ sideMenu, showMenu, profile }: Props) {
               </a>
             ))}
           </div>
+          <button
+            type="button"
+            onClick={() => setShowPhone((v) => !v)}
+            className="flex items-center justify-center mx-auto mt-6 mb-2 w-56 py-2 font-semibold rounded-lg shadow transition-all duration-200 bg-[#ff9f22] text-black hover:bg-white hover:text-[#ff9f22] hover:shadow-[0_0_0_4px_#ff9f22] focus:outline-none"
+          >
+            <FaCoffee className="w-6 h-6 mr-2" />
+            Buy Me a Coffee
+          </button>
+          {showPhone && (
+            <div className="mt-3 mb-2 w-56 mx-auto p-4 rounded-lg bg-gray-800 text-gray-100 text-center shadow-lg border border-[#ff9f22]">
+              <div className="text-lg font-bold mb-1">Tchikaya Kenzo</div>
+              <div className="text-xl font-mono">+237 690 456 422</div>
+            </div>
+          )}
         </div>
 
         <div className="bottom bg-gray-800 flex-grow">

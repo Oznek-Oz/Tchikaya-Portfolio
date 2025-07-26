@@ -6,12 +6,16 @@ import MediaIcons from "./MediaIcons"
 import MyLink from "./MyLink"
 import Slide from "./Slide"
 import Typing from "./Typing"
+import { useState } from "react"
+import { useReactiveVar } from "@apollo/client"
+import { showMenu } from "../apollo-client"
 
 interface Props {
   profileData: ProfileData
 }
 
 export default function ProfileCard({ profileData }: Props) {
+  const [showPhone, setShowPhone] = useState(false)
   return (
     <div className="profile h-full lg:w-[42rem] xl:w-[48rem] bg-gray-900 rounded-lg relative lg:block hidden">
       <div className="relative z-40 w-full h-full myShadow">
@@ -32,15 +36,14 @@ export default function ProfileCard({ profileData }: Props) {
         <Typing />
         <MediaIcons />
 
-        <a
-          href="https://www.buymeacoffee.com/yourusername"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          type="button"
+          onClick={() => { if (typeof window !== 'undefined') (window as any).__showPhoneOnMenuOpen = true; showMenu(true); }}
           className="flex items-center justify-center mx-auto mt-4 mb-2 w-56 py-2 font-semibold rounded-lg shadow transition-all duration-200 bg-[#ff9f22] text-black hover:bg-white hover:text-[#ff9f22] hover:shadow-[0_0_0_4px_#ff9f22] focus:outline-none"
         >
           <FaCoffee className="w-6 h-6 mr-2" />
           Buy Me a Coffee
-        </a>
+        </button>
 
         <div className="absolute bottom-0 left-0 flex w-full h-28 borderLeft customLine">
           <MyLink
