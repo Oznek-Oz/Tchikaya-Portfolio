@@ -73,7 +73,14 @@ export default function Works() {
     if (modalOpen && typeof window !== 'undefined') {
       const init = () => {
         if ((window as any).Swiper && document.querySelector('.swiper-modal')) {
-          if((window as any).modalSwiper) { (window as any).modalSwiper.destroy(); (window as any).modalSwiper = null; }
+          if((window as any).modalSwiper) { 
+            try {
+              (window as any).modalSwiper.destroy(); 
+            } catch (error) {
+              console.warn('Swiper destroy error:', error);
+            }
+            (window as any).modalSwiper = null; 
+          }
           (window as any).modalSwiper = new (window as any).Swiper('.swiper-modal', {
             initialSlide: modalIndex,
             navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
@@ -104,7 +111,14 @@ export default function Works() {
       }
       poll();
       return () => {
-        if((window as any).modalSwiper) { (window as any).modalSwiper.destroy(); (window as any).modalSwiper = null; }
+        if((window as any).modalSwiper) { 
+          try {
+            (window as any).modalSwiper.destroy(); 
+          } catch (error) {
+            console.warn('Swiper cleanup error:', error);
+          }
+          (window as any).modalSwiper = null; 
+        }
       }
     }
   }, [modalOpen, modalIndex])
