@@ -46,22 +46,28 @@ export default function Stats() {
     <section className="h-full overflow-y-scroll myScroll">
       <Title name="statistics" />
       <ul className="grid grid-cols-1 gap-5 px-12 py-8 sm:grid-cols-2 md:grid-cols-3">
-        <Statistic title="Weekly views" info={pageViews} />
-        <Statistic
+        {/* <Statistic title="Weekly views" info={pageViews} /> */}
+        {/* <Statistic
           title="articles"
           info={totalArticles}
           externalLink="https://dev.to/oznekoz"
-        />
+        /> */}
         <Statistic
           title="total reactions"
           info={guestBookCount}
           externalLink="#guestComments"
         />
-        {statisticsData.map((s, i) => (
+        {/* {statisticsData.map((s, i) => (
           <Statistic key={i} title={s.title} info={s.info} />
-        ))}
+        ))} */}
       </ul>
 
+      {/* <Title name="links" />
+      <ul className="px-12 py-8 mb-8 space-y-6">
+        {socialMedia.map((sm) => (
+          <LinkListItem key={sm.id} socialMedia={sm} />
+        ))}
+      </ul> */}
       <Title name="links" />
       <ul className="px-12 py-8 mb-8 space-y-6">
         {socialMedia.map((sm) => (
