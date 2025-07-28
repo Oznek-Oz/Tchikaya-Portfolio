@@ -48,17 +48,17 @@ export default function Prices() {
             <FaEnvelope className="mx-auto text-5xl text-[#ff9f22] opacity-80" />
           </div>
           <h3 className="text-2xl font-bold text-gray-300 mb-4">
-            Besoin d&apos;un projet personnalisé ?
+            Need a custom project?
           </h3>
           <p className="text-lg text-gray-500 mb-8 leading-relaxed">
-            Contactez-moi pour discuter de vos besoins spécifiques et obtenir un devis personnalisé.
+            Contact me to discuss your specific needs and get a personalized quote.
           </p>
           <button
             onClick={handleContactClick}
             className="inline-flex items-center gap-3 px-8 py-4 bg-[#ff9f22] hover:bg-[#e68a0a] text-black font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
           >
             <FaEnvelope className="text-xl" />
-            Contactez-moi
+            Contact me
           </button>
         </div>
       </div>
