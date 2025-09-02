@@ -131,7 +131,9 @@ export default function Works() {
     variables: { first: 6 },
   })
   const filteredWorks = useMemo(() => {
-    if (worksData === undefined) return
+    //if (worksData === undefined) return
+    if (!worksData) return []
+    if (currentTab === "All") return worksData.worksConnection.edges
     return worksData.worksConnection.edges.filter((w) =>
       w.node.workTabs.some((t) => t.tab === currentTab)
     )
